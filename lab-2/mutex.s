@@ -20,7 +20,6 @@ lock_mutex:
 	CMP R2, #unlocked
 	BNE .check_lock
 	POP {R1, R2}	
-	DMB
         @ END CODE INSERT
 	bx lr
 	.size lock_mutex, .-lock_mutex
@@ -33,7 +32,6 @@ unlock_mutex:
 	ldr R1, =unlocked
 	STR R1, [R0]
 	POP {R1}
-	DMB
         @ END CODE INSERT
 	bx lr
 	.size unlock_mutex, .-unlock_mutex
