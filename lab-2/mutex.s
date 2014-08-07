@@ -14,8 +14,8 @@ lock_mutex:
 
 .check_lock:
 	LDREX R2, [R0]
-	CMP R2, #unlocked
-	BNE .check_lock
+	CMP R2, #locked
+	BEQ .check_lock
 	STREX R2, R1, [R0]
 	CMP R2, #unlocked
 	BNE .check_lock
